@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class BankAccount {
+private:
+    string Name;
+    string Address;
+    string PhoneNumber;
+    string Account_Type;
+    float Account_Balance;
+    int Account_Number;
+
+public:
+    BankAccount(const string& name, const string& address, const string& phone, const string& accountType, float balance, int accountNumber)
+        : Name(name), Address(address), PhoneNumber(phone), Account_Type(accountType), Account_Balance(balance), Account_Number(accountNumber) {}
+
+    // Copy Constructor
+    BankAccount(const BankAccount& obj)
+        : Name(obj.Name), Address(obj.Address), PhoneNumber(obj.PhoneNumber), Account_Type(obj.Account_Type), Account_Balance(obj.Account_Balance), Account_Number(obj.Account_Number) {}
+
+    // Display Function
+    void display() const {
+        cout << "Name: " << Name << endl;
+        cout << "Address: " << Address << endl;
+        cout << "Phone Number: " << PhoneNumber << endl;
+        cout << "Account Type: " << Account_Type << endl;
+        cout << "Account Balance: " << Account_Balance << endl;
+        cout << "Account Number: " << Account_Number << endl;
+    }
+};
+int main() {
+    BankAccount account1("Ali Ahmed", "123 Street, City", "0300-1234567", "Savings", 5000.0, 101);
+    cout << "Account 1 Details:" << endl;
+    account1.display();
+    cout << "------------------------" << endl;
+    BankAccount account2 = account1;
+    cout << "Account 2 (Copied) Details:" << endl;
+    account2.display();
+    cout << "------------------------" << endl;
+    return 0;
+}
