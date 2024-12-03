@@ -1,0 +1,71 @@
+#include <iostream>
+#include <string> 
+using namespace std;
+class NextBridge {
+private:
+    string name;
+    string address;
+    string phoneNumber;
+    string level; 
+    int experience;
+    double currentSalary;
+    double increment;
+
+public:
+    // Parameterized Constructor
+    NextBridge(const string& n, const string& addr, const string& phone, const string& lvl, int exp, double salary)
+        : name(n), address(addr), phoneNumber(phone), level(lvl), experience(exp), currentSalary(salary), increment(0) {}
+
+    // Copy Constructor
+    NextBridge(const NextBridge& obj)
+        : name(obj.name), address(obj.address), phoneNumber(obj.phoneNumber), level(obj.level),
+        experience(obj.experience), currentSalary(obj.currentSalary), increment(obj.increment) {}
+
+    // Increment Calculation
+    void calculateIncrement() {
+        if (experience == 0) {
+            increment = 0;
+        }
+        else if (experience <= 2) {
+            increment = currentSalary * 0.10;
+        }
+        else if (experience <= 6) {
+            increment = currentSalary * 0.20;
+        }
+        else {
+            increment = currentSalary * 0.40;
+        }
+    }
+
+    // Display Function
+    void display() const {
+        cout << "Name: " << name << endl;
+        cout << "Address: " << address << endl;
+        cout << "Phone Number: " << phoneNumber << endl;
+        cout << "Level: " << level << endl;
+        cout << "Experience: " << experience << " years" << endl;
+        cout << "Current Salary: " << currentSalary << endl;
+        cout << "Increment: " << increment << endl;
+    }
+};
+
+int main() {
+    // Creating an object using the parameterized constructor
+    NextBridge emp1("Ali Khan", "123 Main Street", "0300-1234567", "junior", 3, 50000);
+
+    // Calculate increment and display details
+    emp1.calculateIncrement();
+    cout << "Employee 1 Details:" << endl;
+    emp1.display();
+    cout << "------------------------" << endl;
+
+    // Create another object using the copy constructor
+    NextBridge emp2 = emp1;
+
+    // Display details of the copied object
+    cout << "Employee 2 (Copied) Details:" << endl;
+    emp2.display();
+    cout << "------------------------" << endl;
+
+    return 0;
+}
