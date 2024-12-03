@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+class Box {
+private:
+	int Length;
+	int Width;
+	int Height;
+public:
+	//default and parameterized constructors.
+	Box(int length = 0, int width = 0, int height = 0):Length(length),Width(width),Height(height){}
+	double calculateVolume() {
+		return Length * Width * Height;
+	}
+	void display() {
+		cout << "Length:" << Length << endl;
+		cout << "Width:" << Width << endl;
+		cout << "Height:" << Height << endl;
+	}
+};
+int main() {
+	Box box1(3, 6, 8);
+	Box box2(2, 3, 4);
+	cout << "BOX 1 Details:" << endl;
+	box1.display();
+	cout << "BOX 2 Details:" << endl;
+	box2.display();
+	cout << "Volume of Box1:" << box1.calculateVolume()<<endl;
+	cout << "Volume of Box2:" << box2.calculateVolume()<<endl;
+
+	Box* boxpointer = &box1;
+	cout << "Calculating box 1 volume with using pointers: " << boxpointer->calculateVolume()<<endl;
+	boxpointer = &box2;
+	cout << "Calculating box 2 volume with using pointers: " << boxpointer->calculateVolume();
+	return 0;
+}
