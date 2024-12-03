@@ -1,0 +1,123 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class Student {
+private:
+	int ID;
+	string Name;
+	int Serial_No;
+	int ITC_marks;
+	int PF_marks;
+	int OOP_marks;
+public:
+	Student() {
+		ID = 0;
+		Name = "";
+		Serial_No = 0;
+		ITC_marks = 0;
+		PF_marks = 0;
+		OOP_marks = 0;
+	}
+	Student(int id, const string& name, int serial, int itc, int pf, int oop) {
+		ID = id;
+		Name = name;
+		Serial_No = serial;
+		ITC_marks = itc;
+		PF_marks = pf;
+		OOP_marks = oop;
+	}
+	void setID(int id) {
+		ID = id;
+	}
+	void setName(int name) {
+		Name = name;
+	}
+	void setSerial(int serial) {
+		Serial_No = serial;
+	}
+	void setItc(int itc) {
+		ITC_marks = itc;
+	}
+	void setPf(int pf) {
+		PF_marks = pf;
+	}
+	void setOop(int oop) {
+		OOP_marks = oop;
+	}
+	int getID()const {
+		return ID;
+	}
+	const string& getname() const{
+		return Name;
+	}
+	int getSerial()const {
+		return Serial_No;
+	}
+	int getITC()const {
+		return ITC_marks;
+	}
+	int getPF()const {
+		return PF_marks;
+	}
+	int getOOP()const {
+		return OOP_marks;
+	}
+	void display() {
+		cout << "Name:" << Name << endl;
+		cout << "ID:" << ID << endl;
+		cout << "Serial NO:" << Serial_No << endl;
+		cout << "ITC Marks:" << ITC_marks << endl;
+		cout << "PF Marks:" << PF_marks << endl;
+		cout << "OOP Marks:" << OOP_marks << endl;
+	}
+};
+int main() {
+	Student students[5]{
+	{ 1, "Ali", 115, 80, 85, 90 },
+	{2,"Sara",116,90,99,78 },
+	{3,"Ahsan",117,89,90,98},
+	{4,"Dr",113,89,90,67},
+	{5,"Hamza",110,90,50,78}
+	};
+	cout << "Showing /Displaying pre-defined student:" << endl;
+	for (int i = 0; i < 5; i++) {
+		students[i].display();
+		cout << "__________________________________" << endl;
+	}
+	int size;
+	cout << "Enter the number of students: ";
+	cin >> size;
+
+	Student* dynamicStudents = new Student[size];
+	for (int i = 0; i < size; i++) {
+		int id, serial, itc, pf, oop;
+		string name;
+		cout << "Enter details for student " << i + 1 << endl;
+		cout << "ID: ";
+		cin >> id;
+		cout << "Name: ";
+		cin.ignore();
+		getline(cin, name);
+		cout << "Serial No: ";
+		cin >> serial;
+		cout << "ITC Marks: ";
+		cin >> itc;
+		cout << "PF Marks: ";
+		cin >> pf;
+		cout << "OOP Marks: ";
+		cin >> oop;
+
+		dynamicStudents[i] = Student(id, name, serial, itc, pf, oop);
+	}
+
+	cout << "Displaying dynamic students:" << endl;
+	for (int i = 0; i < size; i++) {
+		dynamicStudents[i].display();
+		cout << "-------------------" << endl;
+	}
+
+	delete[] dynamicStudents;
+	return 0;
+
+
+}
